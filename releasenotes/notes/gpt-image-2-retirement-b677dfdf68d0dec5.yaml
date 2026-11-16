@@ -1,0 +1,6 @@
+upgrade:
+  - |
+    ``OpenAIImageGenerator`` now defaults to ``gpt-image-2.6-flare`` because
+    OpenAI will retire ``gpt-image-2`` on February 10, 2027. Explicit model
+    selections, including saved pipelines, are preserved and should be reviewed
+    before that date.

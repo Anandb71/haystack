@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 @component
 class OpenAIImageGenerator:
     """
-    Generates images using OpenAI's image generation models such as `gpt-image-2`.
+    Generates images using OpenAI's image generation models such as `gpt-image-2.6-flare`.
 
     For details on OpenAI API parameters, see
     [OpenAI documentation](https://developers.openai.com/api/reference/resources/images/methods/generate).
@@ -34,7 +34,7 @@ class OpenAIImageGenerator:
 
     def __init__(
         self,
-        model: str = "gpt-image-2",
+        model: str = "gpt-image-2.6-flare",
         quality: Literal["auto", "high", "medium", "low"] = "auto",
         size: Literal["1024x1024", "1024x1536", "1536x1024", "auto"] = "1024x1024",
         response_format: Literal["b64_json"] = "b64_json",
@@ -46,13 +46,13 @@ class OpenAIImageGenerator:
         http_client_kwargs: dict[str, Any] | None = None,
     ) -> None:
         """
-        Creates an instance of OpenAIImageGenerator. Unless specified otherwise in `model`, uses OpenAI's gpt-image-2.
+        Creates an instance of OpenAIImageGenerator. Defaults to OpenAI's gpt-image-2.6-flare.
 
         :param model: The model to use for image generation. Model names can be found in the
             [OpenAI documentation](https://developers.openai.com/api/docs/models/all).
         :param quality: The quality of the generated image. Can be "auto", "high", "medium", or "low".
         :param size: The size of the generated images. One of 1024x1024, 1024x1536, 1536x1024, or "auto".
-            `gpt-image-2` also supports arbitrary sizes. You can find more information about supported sizes in
+            You can find more information about model-specific supported sizes in
             the [OpenAI documentation](https://developers.openai.com/api/reference/resources/images/methods/generate).
         :param response_format: This parameter is ignored and only kept for backward compatibility.
         :param api_key: The OpenAI API key to connect to OpenAI.

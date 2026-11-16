@@ -29,7 +29,7 @@ def mock_image_response():
 class TestOpenAIImageGenerator:
     def test_init_default(self, monkeypatch: pytest.MonkeyPatch) -> None:
         component = OpenAIImageGenerator()
-        assert component.model == "gpt-image-2"
+        assert component.model == "gpt-image-2.6-flare"
         assert component.quality == "auto"
         assert component.size == "1024x1024"
         assert component.api_key == Secret.from_env_var("OPENAI_API_KEY")
@@ -82,7 +82,7 @@ class TestOpenAIImageGenerator:
         assert data == {
             "type": "haystack.components.generators.openai_image_generator.OpenAIImageGenerator",
             "init_parameters": {
-                "model": "gpt-image-2",
+                "model": "gpt-image-2.6-flare",
                 "quality": "auto",
                 "size": "1024x1024",
                 "api_key": {"type": "env_var", "env_vars": ["OPENAI_API_KEY"], "strict": True},
@@ -160,7 +160,7 @@ class TestOpenAIImageGenerator:
             "init_parameters": {},
         }
         generator = OpenAIImageGenerator.from_dict(data)
-        assert generator.model == "gpt-image-2"
+        assert generator.model == "gpt-image-2.6-flare"
         assert generator.quality == "auto"
         assert generator.size == "1024x1024"
         assert generator.api_key.to_dict() == {"type": "env_var", "env_vars": ["OPENAI_API_KEY"], "strict": True}
